@@ -1,5 +1,5 @@
 type ExampleEntity @entity {
   id: ID!
   count: BigInt!
-  action: Bytes! # bytes32
+  action: String!
 }

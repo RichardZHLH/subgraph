@@ -51,21 +51,12 @@ export class ExampleEntity extends Entity {
     this.set("count", Value.fromBigInt(value));
   }
 
-  get groupId(): Bytes {
-    let value = this.get("groupId");
-    return value!.toBytes();
+  get action(): string {
+    let value = this.get("action");
+    return value!.toString();
   }
 
-  set groupId(value: Bytes) {
-    this.set("groupId", Value.fromBytes(value));
-  }
-
-  get wkAddr(): Bytes {
-    let value = this.get("wkAddr");
-    return value!.toBytes();
-  }
-
-  set wkAddr(value: Bytes) {
-    this.set("wkAddr", Value.fromBytes(value));
+  set action(value: string) {
+    this.set("action", Value.fromString(value));
   }
 }
