@@ -1,0 +1,65 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: StoremanGroupDelegate
+    network: mainnet
+    source:
+      address: "0x1E7450D5d17338a348C5438546f0b4D0A5fbeaB6"
+      abi: StoremanGroupDelegate
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - stakeInEvent
+        - stakeAppendEvent
+        - stakeOutEvent
+        - stakeClaimEvent
+        - stakeIncentiveClaimEvent
+        - stakeIncentiveCrossFeeEvent
+        - storemanTransferEvent
+        - StoremanGroupUnregisterEvent
+        - delegateInEvent
+        - delegateOutEvent
+        - delegateClaimEvent
+        - delegateIncentiveClaimEvent
+        - partInEvent
+        - partOutEvent
+        - partClaimEvent
+      abis:
+        - name: StoremanGroupDelegate
+          file: ./abis/StoremanGroupDelegate.json
+      eventHandlers:
+        - event: stakeInEvent(indexed bytes32,indexed address,indexed address,uint256)
+          handler: handlestakeInEvent
+        - event: stakeAppendEvent(indexed address,indexed address,indexed uint256)
+          handler: handlestakeAppendEvent
+        - event: stakeOutEvent(indexed address,indexed address)
+          handler: handlestakeOutEvent
+        - event: stakeClaimEvent(indexed address,indexed address,indexed bytes32,uint256)
+          handler: handlestakeClaimEvent
+        - event: stakeIncentiveClaimEvent(indexed address,indexed address,indexed uint256)
+          handler: handlestakeIncentiveClaimEvent
+        - event: stakeIncentiveCrossFeeEvent(indexed address,indexed address,indexed uint256)
+          handler: handlestakeIncentiveCrossFeeEvent
+        - event: storemanTransferEvent(indexed bytes32,indexed bytes32,address[])
+          handler: handlestoremanTransferEvent
+        - event: StoremanGroupUnregisterEvent(indexed bytes32)
+          handler: handleStoremanGroupUnregisterEvent
+        - event: delegateInEvent(indexed address,indexed address,indexed uint256)
+          handler: handledelegateInEvent
+        - event: delegateOutEvent(indexed address,indexed address)
+          handler: handledelegateOutEvent
+        - event: delegateClaimEvent(indexed address,indexed address,indexed uint256)
+          handler: handledelegateClaimEvent
+        - event: delegateIncentiveClaimEvent(indexed address,indexed address,indexed uint256)
+          handler: handledelegateIncentiveClaimEvent
+        - event: partInEvent(indexed address,indexed address,indexed uint256)
+          handler: handlepartInEvent
+        - event: partOutEvent(indexed address,indexed address)
+          handler: handlepartOutEvent
+        - event: partClaimEvent(indexed address,indexed address,indexed uint256)
+          handler: handlepartClaimEvent
+      file: ./src/storeman-group-delegate.ts
