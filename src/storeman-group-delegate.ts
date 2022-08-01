@@ -20,54 +20,55 @@ import {
 import { ExampleEntity } from "../generated/schema"
 
 export function handlestakeInEvent(event: stakeInEvent): void {
-
   let entity = new ExampleEntity(event.transaction.hash.toHex())
-
-  // Entity fields can be set using simple assignments
   entity.count = event.params.value
-  
   entity.action = "stakeInEvent"
-
-  // Entities can be written to the store with `.save()`
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
   entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.getSelectedSmNumber(...)
-  // - contract.getStoremanGroupConfig(...)
-  // - contract.getDeposit(...)
-  // - contract.getStoremanGroupStatus(...)
-  // - contract.setInvalidSm(...)
-  // - contract.getThresholdByGrpId(...)
-  // - contract.getSelectedSmInfo(...)
 }
 
-export function handlestakeAppendEvent(event: stakeAppendEvent): void {}
+export function handlestakeAppendEvent(event: stakeAppendEvent): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.value
+  entity.action = "stakeAppendEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handlestakeOutEvent(event: stakeOutEvent): void {}
 
-export function handlestakeClaimEvent(event: stakeClaimEvent): void {}
+export function handlestakeClaimEvent(event: stakeClaimEvent): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.value
+  entity.action = "stakeClaimEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handlestakeIncentiveClaimEvent(
   event: stakeIncentiveClaimEvent
-): void {}
+): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.amount
+  entity.action = "stakeIncentiveClaimEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handlestakeIncentiveCrossFeeEvent(
   event: stakeIncentiveCrossFeeEvent
-): void {}
+): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.amount
+  entity.action = "stakeIncentiveCrossFeeEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handlestoremanTransferEvent(
   event: storemanTransferEvent
@@ -77,18 +78,53 @@ export function handleStoremanGroupUnregisterEvent(
   event: StoremanGroupUnregisterEvent
 ): void {}
 
-export function handledelegateInEvent(event: delegateInEvent): void {}
+export function handledelegateInEvent(event: delegateInEvent): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.value
+  entity.action = "delegateInEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handledelegateOutEvent(event: delegateOutEvent): void {}
 
-export function handledelegateClaimEvent(event: delegateClaimEvent): void {}
+export function handledelegateClaimEvent(event: delegateClaimEvent): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.amount
+  entity.action = "delegateClaimEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handledelegateIncentiveClaimEvent(
   event: delegateIncentiveClaimEvent
-): void {}
+): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.amount
+  entity.action = "delegateIncentiveClaimEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
-export function handlepartInEvent(event: partInEvent): void {}
+export function handlepartInEvent(event: partInEvent): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.value
+  entity.action = "partInEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}
 
 export function handlepartOutEvent(event: partOutEvent): void {}
 
-export function handlepartClaimEvent(event: partClaimEvent): void {}
+export function handlepartClaimEvent(event: partClaimEvent): void {
+  let entity = new ExampleEntity(event.transaction.hash.toHex())
+  entity.count = event.params.amount
+  entity.action = "partClaimEvent"
+  entity.block = event.block.number
+  entity.wkAddr = event.params.wkAddr.toHexString()
+  entity.save()
+}

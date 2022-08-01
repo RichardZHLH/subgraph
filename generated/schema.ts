@@ -59,4 +59,30 @@ export class ExampleEntity extends Entity {
   set action(value: string) {
     this.set("action", Value.fromString(value));
   }
+
+  get block(): BigInt {
+    let value = this.get("block");
+    return value!.toBigInt();
+  }
+
+  set block(value: BigInt) {
+    this.set("block", Value.fromBigInt(value));
+  }
+
+  get wkAddr(): string | null {
+    let value = this.get("wkAddr");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set wkAddr(value: string | null) {
+    if (!value) {
+      this.unset("wkAddr");
+    } else {
+      this.set("wkAddr", Value.fromString(<string>value));
+    }
+  }
 }

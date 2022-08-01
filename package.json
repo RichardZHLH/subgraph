@@ -4,13 +4,16 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "yarn codegen && yarn build && yarn create-local && yarn deploy-local", 
+    "deploy": "yarn codegen && yarn build && yarn create-local && yarn deploy-local",
     "create-local": "graph create --node https://thegraph.one/deploy wanchain/StoremanGroup",
     "remove-local": "graph remove --node https://thegraph.one/deploy wanchain/StoremanGroup",
     "deploy-local": "graph deploy --node https://thegraph.one/deploy --ipfs http://thegraph.one:5001 wanchain/StoremanGroup"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@graphprotocol/graph-cli": "0.32.0",
-    "@graphprotocol/graph-ts": "0.27.0"
+    "@graphprotocol/graph-ts": "0.27.0",
+    "axios": "^0.27.2",
+    "urql": "^2.2.3"
   }
 }

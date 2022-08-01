@@ -2,4 +2,6 @@ type ExampleEntity @entity {
   id: ID!
   count: BigInt!
   action: String!
+  block: BigInt!
+  wkAddr: String
 }
