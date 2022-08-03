@@ -388,6 +388,28 @@ export class partClaimEvent__Params {
   }
 }
 
+export class storemanGroupContributeEvent extends ethereum.Event {
+  get params(): storemanGroupContributeEvent__Params {
+    return new storemanGroupContributeEvent__Params(this);
+  }
+}
+
+export class storemanGroupContributeEvent__Params {
+  _event: storemanGroupContributeEvent;
+
+  constructor(event: storemanGroupContributeEvent) {
+    this._event = event;
+  }
+
+  get sender(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get value(): BigInt {
+    return this._event.parameters[1].value.toBigInt();
+  }
+}
+
 export class StoremanGroupDelegate__getStoremanGroupConfigResult {
   value0: Bytes;
   value1: i32;

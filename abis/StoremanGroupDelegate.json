@@ -145,6 +145,15 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "sender", "type": "address" },
+      { "indexed": true, "name": "value", "type": "uint256" }
+    ],
+    "name": "storemanGroupContributeEvent",
+    "type": "event"
+  },
+  {
     "constant": true,
     "inputs": [{ "name": "groupId", "type": "bytes32" }],
     "name": "getSelectedSmNumber",

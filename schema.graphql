@@ -1,7 +1,8 @@
 type ExampleEntity @entity {
   id: ID!
-  count: BigInt!
+  count: String!
   action: String!
   block: BigInt!
   wkAddr: String
+  sender: String
 }

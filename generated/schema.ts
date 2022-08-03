@@ -42,13 +42,13 @@ export class ExampleEntity extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get count(): BigInt {
+  get count(): string {
     let value = this.get("count");
-    return value!.toBigInt();
+    return value!.toString();
   }
 
-  set count(value: BigInt) {
-    this.set("count", Value.fromBigInt(value));
+  set count(value: string) {
+    this.set("count", Value.fromString(value));
   }
 
   get action(): string {
@@ -83,6 +83,23 @@ export class ExampleEntity extends Entity {
       this.unset("wkAddr");
     } else {
       this.set("wkAddr", Value.fromString(<string>value));
+    }
+  }
+
+  get sender(): string | null {
+    let value = this.get("sender");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set sender(value: string | null) {
+    if (!value) {
+      this.unset("sender");
+    } else {
+      this.set("sender", Value.fromString(<string>value));
     }
   }
 }

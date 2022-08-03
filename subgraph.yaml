@@ -28,6 +28,7 @@ dataSources:
         - partInEvent
         - partOutEvent
         - partClaimEvent
+        - storemanGroupContributeEvent
       abis:
         - name: StoremanGroupDelegate
           file: ./abis/StoremanGroupDelegate.json
@@ -62,4 +63,6 @@ dataSources:
           handler: handlepartOutEvent
         - event: partClaimEvent(indexed address,indexed address,indexed uint256)
           handler: handlepartClaimEvent
+        - event: storemanGroupContributeEvent(indexed address,indexed uint256)
+          handler: handlestoremanGroupContributeEvent
       file: ./src/storeman-group-delegate.ts
